@@ -56,4 +56,6 @@ public class Main {
         System.out.println("\tDirty: " + dirty);
         System.out.println("\tPrice: $" + price);
     }
+
+    
 }

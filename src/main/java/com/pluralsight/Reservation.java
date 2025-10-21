@@ -7,7 +7,7 @@ public class Reservation {
     private boolean isWeekend;
 
     public Reservation(String roomType, int numberOfNights, boolean isWeekend) {
-        this.roomType = roomType.trim(); //Either "King" or "Double"
+        this.roomType = roomType.trim();
 
         if (roomType.toLowerCase().equals("king")) {
             this.price = 139.00;
@@ -54,7 +54,7 @@ public class Reservation {
     }
 
     public double getReservationTotal() {
-        double upCharge = this.price; //upCharge stays the same when it's not a weekend reservation
+        double upCharge = this.price;
 
         if (this.isWeekend) {
             upCharge *= 1.1;

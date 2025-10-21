@@ -39,7 +39,6 @@ public class Room {
 
     public void checkOut() {
         this.occupied = false;
-        this.dirty = true;
     }
 
     public void cleanRoom() {

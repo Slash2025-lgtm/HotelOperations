@@ -21,7 +21,6 @@ public class Employee {
         return regularPay + overtimePay;
     }
 
-    //Will return 40 or less, based on their hours worked
     public double getRegularHours() {
         if (this.hoursWorked <= 40) {
             return this.hoursWorked;
@@ -30,7 +29,6 @@ public class Employee {
         }
     }
 
-    //Will hours worked over 40
     public double getOvertimeHours() {
         if (this.hoursWorked > 40) {
             return this.hoursWorked - 40;
