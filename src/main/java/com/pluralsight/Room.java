@@ -42,7 +42,6 @@ public class Room {
     }
 
     public void cleanRoom() {
-        this.occupied = false;
         this.dirty = false;
     }
 }
