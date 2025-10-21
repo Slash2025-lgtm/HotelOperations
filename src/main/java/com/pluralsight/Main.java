@@ -1,4 +1,5 @@
 package com.pluralsight;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -6,7 +7,7 @@ public class Main {
     public static Scanner keyboard = new Scanner(System.in);
     public static Reservation r = new Reservation("King", 5, false);
     public static Room room = new Room(2, false, false, r.getPrice());
-
+    public static Employee employee = new Employee(1111, "Jack", "Front Desk", 12.50, 25);
     public static void main(String[] args) {
         while (true) {
             run();
@@ -25,7 +26,7 @@ public class Main {
                 checkedSimulation();
                 break;
             case "2":
-
+                punchedSimulation();
                 break;
             default:
                 System.out.println("\nERROR: Typed Character either is not a number or the wrong number");
@@ -57,5 +58,24 @@ public class Main {
         System.out.println("\tPrice: $" + price);
     }
 
-    
+    public static void punchedSimulation() {
+        System.out.println("\n=== Your Data ===");
+        System.out.println("Please enter you punch in time (Ex. 12.30 -> 12:30)");
+        double time = keyboard.nextDouble();
+        keyboard.nextLine();
+
+        String timeOfDay = "";
+        boolean timeFound = false;
+        while (timeFound == false) {
+                System.out.println("Please Enter am or pm below");
+                timeOfDay = keyboard.nextLine().trim();
+                if (timeOfDay.equalsIgnoreCase("AM") || timeOfDay.equalsIgnoreCase("PM")) {
+                    timeFound = true;
+                }
+        }
+
+        String newPunchInTime = String.valueOf(employee.punchIn(time));
+        System.out.println(newPunchInTime + timeOfDay.toUpperCase());
+    }
+
 }
