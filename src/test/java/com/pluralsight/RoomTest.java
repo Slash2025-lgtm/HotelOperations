@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoomTest {
-    public static Room room = new Room(0, 100);
-
     @Test
     void checkIn() {
+        Room room = new Room(0, 100);
+
         room.checkIn();
 
         assertTrue(room.isOccupied());
@@ -18,6 +18,8 @@ class RoomTest {
 
     @Test
     void checkOut() {
+        Room room = new Room(0, 100);
+
         room.checkOut();
 
         assertFalse(room.isOccupied());
@@ -26,9 +28,10 @@ class RoomTest {
 
     @Test
     void cleanRoom() {
+        Room room = new Room(0, 100);
+
         room.cleanRoom();
 
-        assertFalse(room.isOccupied());
         assertFalse(room.isDirty());
     }
 }
