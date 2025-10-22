@@ -5,10 +5,10 @@ public class Room {
     private boolean occupied, dirty;
     private double price;
 
-    public Room(int numberOfBeds, boolean occupied, boolean dirty, double price) {
+    public Room(int numberOfBeds, double price) {
         this.numberOfBeds = numberOfBeds;
-        this.occupied = occupied;
-        this.dirty = dirty;
+        this.occupied = false;
+        this.dirty = false;
         this.price = price;
     }
 
