@@ -19,6 +19,6 @@ class EmployeeTest {
     void punchOut() {
         employee.punchOut(testTime);
 
-        assertTrue(employee.getRegularHours() > testTime);
+        assertTrue(employee.getRegularHours() == employee.getRegularHours() + employee.getOvertimeHours());
     }
 }
