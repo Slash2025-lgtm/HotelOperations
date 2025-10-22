@@ -1,11 +1,12 @@
 package com.pluralsight;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 public class Employee {
     private int employeeId;
     private String name, department;
-    private double payRate, hoursWorked;
+    private double payRate, hoursWorked, startTime;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -39,26 +40,27 @@ public class Employee {
         }
     }
 
-    public String punchIn(double time) {
-        String newTime = "";
-        String[] timeList = String.valueOf(time).split("[.]");
-        String hours = timeList[0];
-        String minutes = timeList[1];
-        int valueOfMinutes = Integer.valueOf(minutes);
-        if (valueOfMinutes > 59) {
-            newTime = "Error The time you entered is invalid";
+    public void punchTimeCard(double time) {
+        if (this.startTime > 0) {
+            this.hoursWorked += (time - this.startTime);
+            this.startTime = 0;
         } else {
-            if (valueOfMinutes > 9) {
-                newTime = hours + ":" + minutes;
-            } else {
-                newTime = hours + ":" + minutes + "0";
-            }
-
+            this.startTime = time;
         }
-        return newTime;
     }
 
-    public double punchOut(double time) {
-        return time;
+    public void punchTimeCard() {
+        LocalTime nowTime = LocalTime.now();
+        int hours = nowTime.getHour();
+        int minutes = nowTime.getMinute();
+
+        double time = Double.parseDouble(hours + "." + minutes);
+        System.out.println(time);
+        if (this.startTime > 0) {
+            this.hoursWorked += (time - this.startTime);
+            this.startTime = 0;
+        } else {
+            this.startTime = time;
+        }
     }
 }
